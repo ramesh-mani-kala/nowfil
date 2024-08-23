@@ -1,0 +1,37 @@
+For Only Robot file  -- http://172.17.0.2:7070/docker/executeRequest
+
+{
+    "testPath":"TestFramework",
+    "repoUrl":"https://github.com/ramesh-mani-kala/TestFramework.git",
+    "testCaseName":"testcase1"
+}
+
+docker build -t robot:1.0 .
+docker run -it -d -v mount1:/usr/src/app -p 7070:7070 e32f17b4a9a5        --- need to change the volume in code and in run command also. Give the volume name as onlyrobot beacause it has only the robotfile.
+
+
+
+
+For robot with compose file -- running inside the server. if its in local docker use 172.17.0.2 in the url
+docker build -t robotwithcompose:1.0 .
+docker run -it -d -v robotwithcompose:/opt/robotframework/tests -p 7070:7070 f8d69608113f
+{
+    "testPath":"Robotdemo",
+    "repoUrl":"https://github.com/purva-vvdn/Robotdemo.git",
+    "testCaseName":"sample"
+}
+
+
+
+
+
+
+for running playwright --- http://172.17.0.2:7070/docker/runPlaywright
+
+
+docker-compose up --build -d
+docker run -it --rm a2450ff0c300      -- api is running. need to mount the report in local and save it in database. need to change the run command and in code.
+
+
+docker run -it -d -v playwright:/usr/src/app/test-results -p 7070:7070 85ca6c229937
+
